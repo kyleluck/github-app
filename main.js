@@ -12,7 +12,7 @@ function getData(callback) {
 
 $(function() {
   getData(function(result) {
-    var images;
+    var images = '';
     for (var prop in result) {
       if (result.hasOwnProperty(prop)) {
         images += "<img src='" + result[prop] + "' alt='" + prop + "'>";
