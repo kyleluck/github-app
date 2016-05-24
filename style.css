@@ -1,4 +1,8 @@
 img {
   width: 16.66667%;
   float: left;
+  margin: 3px;
+}
+.clearleft {
+  clear: left;
 }
