@@ -13,7 +13,7 @@ function searchCode(callback) {
   $.ajax({
     method: 'GET',
     headers: {"Authorization": "Basic YWlycG9ydHloOmZ1enp5bG9naWM="},
-    url: 'https://api.github.com/search/code?q=addClass+in:file+language:js+user:kyleluck',
+    url: 'https://api.github.com/search/code?q=push+in:file+language:js+user:kyleluck',
     success: function(data) {
       callback(data);
     }
@@ -33,7 +33,10 @@ $(function() {
   searchCode(function(result) {
     var codeResults = '';
     for (var i = 0; i < result.items.length; i++) {
-      codeResults += "<p>" + result.items[i].url + "</p>";
+      var thisresult = result.items[i];
+      if (thisresult.name !== 'jquery.js') {
+        codeResults += "<p><a href='" + thisresult.html_url + "'>" + thisresult.name + "</a></p>";
+      }
     }
     console.log(result);
     $('.code').append(codeResults);
